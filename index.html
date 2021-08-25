@@ -8,10 +8,11 @@
   <script>
     var acl = new window.Accelerometer();
     alert('made acl');
-    if (acl) {
-       alert('ok');
-    } else {
-      alert("nada");
-    }
+   acl.addEventListener('reading',() => {
+     console.log(acl.x);
+   });
+    alert("starting");
+   acl.start();
+    alert("started");
   </script>
 </html>
