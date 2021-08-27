@@ -20,20 +20,20 @@ try {
     accelerometer.addEventListener('error', event => {
         // Handle runtime errors.
         if (event.error.name === 'NotAllowedError') {
-            report_status("NAE");
+            console.log("NAE");
         } else if (event.error.name === 'NotReadableError' ) {
-            report_status('Cannot connect to the sensor.');
+            console.log('Cannot connect to the sensor.');
         }
     });
     accelerometer.addEventListener('reading', event => {
-        report_status("reading event READING EVENT");                             
+        console.logreport_status("reading event READING EVENT");                             
     });
     accelerometer.start();
 } catch (error) {
     if (error.name === 'SecurityError') {
-        report_status('Sensor construction was blocked by a feature policy.');
+        console.log('Sensor construction was blocked by a feature policy.');
     } else if (error.name === 'ReferenceError') {
-        report_status('Sensor is not supported by the User Agent.');
+        console.log('Sensor is not supported by the User Agent.');
     } else {
         throw error;
     }
