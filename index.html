@@ -5,12 +5,17 @@
     console.log("hello?? anyone out there???");
     function report_status(msg) {
      stat = document.getElementById('status');
-     if (stat!=null) { stat.innerText = msg; }
-    }
+     if (stat!=null) { 
+         stat.innerText = msg; 
+     }
+    }     
+      console.log("after a def?");
     report_status("TRYING");
-    
+        console.log("now??");
+      
 let accelerometer = null;
 try {
+    console.log("in the try");
     accelerometer = new Accelerometer({ referenceFrame: 'device' });
     accelerometer.addEventListener('error', event => {
         // Handle runtime errors.
