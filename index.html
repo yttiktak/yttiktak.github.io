@@ -5,8 +5,15 @@
   <div>testing accelerometer</div>
   <div id = "info">ANY LUCK?</div>
 </body>
-  <script>
-    alert("trying");
+  <script>   
+    function report_status(msg) {
+     stat = document.getElementById('status');
+     if (stat!=null) {
+       stat.innerText = msg;
+     }
+    }
+    
+    report_status("TRYING");
 let accelerometer = null;
 try {
     accelerometer = new Accelerometer({ referenceFrame: 'device' });
@@ -15,7 +22,7 @@ try {
         if (event.error.name === 'NotAllowedError') {
             // Branch to code for requesting permission.
         } else if (event.error.name === 'NotReadableError' ) {
-            alert('Cannot connect to the sensor.');
+            report_status('Cannot connect to the sensor.');
         }
     });
     accelerometer.addEventListener('reading', () => reloadOnShake(accelerometer));
@@ -24,9 +31,9 @@ try {
     // Handle construction errors.
     if (error.name === 'SecurityError') {
         // See the note above about feature policy.
-        alert('Sensor construction was blocked by a feature policy.');
+        report_status('Sensor construction was blocked by a feature policy.');
     } else if (error.name === 'ReferenceError') {
-        alert('Sensor is not supported by the User Agent.');
+        report_status('Sensor is not supported by the User Agent.');
     } else {
         throw error;
     }
