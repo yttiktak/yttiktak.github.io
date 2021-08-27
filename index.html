@@ -20,7 +20,9 @@ try {
             report_status('Cannot connect to the sensor.');
         }
     });
-    accelerometer.addEventListener('reading', () => reloadOnShake(accelerometer));
+    accelerometer.addEventListener('reading', event => {
+        report_status("reading event READING EVENT");                             
+    });
     accelerometer.start();
 } catch (error) {
     if (error.name === 'SecurityError') {
